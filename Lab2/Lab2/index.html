@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Web App Development Lab</title>
+</head>
+<body>
+    <h1 id="lab3" onclick="changeTitle('Lab 3')">Page Title</h1>
+
+
+    <label for="inputA">Enter a value</label>
+    <input id="inputA" type="text">
+    <button onclick="showOutput()">Display in Console</button>
+
+    <h2 id="output"></h2>
+
+    <p>Paragrah 1</p>
+    <p>Paragrah 2</p>
+    <p>Paragrah 3</p>
+    <p>Paragrah 4</p>
+    <p>Paragrah 5</p>
+    <p>Paragrah 6</p>
+    <p>Paragrah 7</p>
+    <p>Paragrah 8</p>
+    <p>Paragrah 9</p>
+    <p>Paragrah 10</p>
+
+    <div class="container">
+        <h2>Calculator</h2>
+  
+        <form>
+          <div class="form-group">
+            <label for="numA">Number 1: </label>
+            <input type="number" step="any" class="form-control" id="numA" name="numA" placeholder="Enter a number">
+          </div>
+          <div class="form-group">
+            <label for="numA">Number 2:</label>
+            <input type="number" step="any" class="form-control" id="numB" name="numB" placeholder="Enter a number">
+          </div>
+          <div class="form-group">
+            <button type="button" class="btn btn-primary" id="calc1">Add</button>
+            <button type="button" class="btn btn-primary" id="calc2">Subtract</button>
+            <button type="button" class="btn btn-primary" id="calc3">Multiply</button>
+            <button type="button" class="btn btn-primary" id="calc4">Divide</button>
+          </div>
+        </form>
+        <label for="pwd">Answer:</label>
+        <div class="well answer" id="answer">numA + numB = answer</div>
+      </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

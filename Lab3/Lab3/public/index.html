@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>News Site</title>
+</head>
+<body>
+    <hr class="w-25" style="border: 1px solid rgba(185, 185, 185, 0.733);">
+    <h1 id="source" class="mt-4">News</h1>
+    <hr class="w-25" style="border: 1px solid rgba(185, 185, 185, 0.733);">
+    <div id="stories"></div>
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <nav class="navbar mt-3 ml-4">
+                <ul id="nav-links">
+                    <li>
+                        <a class="btn btn-outline-primary active px-4" type="button" id="news" onclick="getNews();">News</a>
+                    </li>
+                    <li>
+                        <a class="btn btn-outline-primary px-4" type="button" id="health" onclick="getHealth();">Health</a>
+                    </li>
+                    <li>
+                        <a class="btn btn-outline-primary px-4" type="button" id="sports" onclick="getSports();">Sports</a>
+                    </li>
+                    <li>
+                        <a class="btn btn-outline-primary px-4" type="button" id="business" onclick="getBusiness();">Business</a>
+                    </li>
+                    <li>
+                        <a class="btn btn-outline-primary px-4" type="button" id="technology" onclick="getTechnology();">Technology</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <div class="card my-3 w-100 border-0" id="articles"></div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+    <footer class="footer text-center font-weight-bold mx-auto w-75">
+        <p>Powered by <a href="https://newsapi.org/">NEWSAPI.ORG</a></p>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>
