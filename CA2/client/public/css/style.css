@@ -1,0 +1,8 @@
+.test {
+    background-image: url("../bg.jpg");
+}
+
+.image {
+    max-width: 100%;
+    height: auto;
+}

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./font/css/open-iconic-bootstrap.min.css">
+    <title>AniLand</title>
+</head>
+
+<body>
+   <!-- Navigation -->
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-dark static-top test">
+    <div class="container">
+        <a class="navbar-brand" href="#">AniLand</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a id="login" class="nav-link" href="#" ><span class="oi oi-account-login link-icon"></span>Login</a>
+                </li>
+                <li class="nav-item">
+                    <a id="get-profile" class="nav-link" href="#"><span class="oi oi-person link-icon"></span>Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a id="logout" class="nav-link" href="#"><span class="oi oi-account-logout link-icon"></span>Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-3">
+    <div class="row">
+        <!-- Page Header -->
+        <h2 class="cat-title">Anime by Category</h2>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <!-- Page Body Left Column (menu) -->
+            <div id="categoryList" class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">First item</a>
+                <a href="#" class="list-group-item list-group-item-action">Second item</a>
+                <a href="#" class="list-group-item list-group-item-action">Third item</a>
+            </div>
+            <h5 id="admin-text" class="text-center mt-4">Admin Options</h5>
+            <button type="button" class="btn border w-100 my-2" data-toggle="modal" data-target="#AnimeFormDialog" id="AddAnimeButton">Add Anime</button>
+        </div>
+        <div class="col-sm-10">
+            <!-- Page Body Right Side (Content goes here) -->
+            <div id="animeRows" class="row"></div>
+            <div class="modal fade" id="animeModal" tabindex="-1" aria-labelledby="animeModalLabel">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="animeModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="item"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal forms go here-->
+<!-- Bootstrap Modal Dialogs-->
+<!-- Anime Form -->
+<div class="modal fade" id="AnimeFormDialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Header -->
+            <div class="modal-header">
+                <h4 class="modal-title" id="animeFormTitle">Add a Anime</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Body - contains form inputs-->
+            <!-- The id of each input matches a Anime property -->
+            <div class="modal-body">
+                <form id="animeForm">
+                    <div class="form-group">
+                        <label for="CategoryId">Category:</label>
+                        <select id="CategoryId" class="form-control CategoryId" name="CategoryId">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="AnimeName">Name:</label>
+                        <input id="AnimeName" type="text" class="form-control" name="AnimeName">
+                    </div>
+                    <div class="form-group">
+                        <form method="POST" action="/upload-anime-pic" enctype="multipart/form-data">
+                            <div>
+                                <label>Select your anime picture:</label>
+                                <input type="file" name="profile_pic" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="form-group">
+                        <label for="AnimeDescription">Description:</label>
+                        <input id="AnimeDescription" type="text" class="form-control" name="AnimeDescription">
+                    </div>
+                    <div class="form-group">
+                        <label for="AnimeStock">Stock:</label>
+                        <input id="AnimeStock" type="number" class="form-control" name="AnimeStock">
+                    </div>
+                    <div class="form-group">
+                        <label for="AnimePrice">Price:</label>
+                        <input id="AnimePrice" type="number" min="0.00" max="10000.00" step="0.01"
+                            class="form-control" name="AnimePrice">
+                    </div>
+                    <!-- animeId is a hidden field value is not required but set = 0-->
+                    <input id="AnimeId" type="hidden" name="animeId" value="0">
+                </form>
+            </div>
+            <!-- footer -->
+            <div class="modal-footer">
+                <!-- Buttons - note onclick and data-dismiss attribtes-->
+                <button onclick="addOrUpdateAnime()" type="button" class="btn btn-primary"
+                    data-dismiss="modal">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div><!-- End Anime Form  -->
+    <script src="./javascript/script.js"></script>
+    <!-- Bootstrap 4 Dependencies -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <!-- Auth0 JavaScript -->
+    <script src="https://cdn.auth0.com/js/auth0/9.14.0/auth0.min.js"></script>
+    <script src="./javascript/auth0-variables.js"></script>
+    <script src="./javascript/jwtAuth.js"></script>
+    <script src="./javascript/jwt-decode.js"></script>
+    <!-- End Auth0 JavaScript --> 
+    <script src="./javascript/script.js"></script>
+</body>
+
+</html>

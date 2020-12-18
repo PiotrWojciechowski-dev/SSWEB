@@ -1,0 +1,9 @@
+{
+    "issuer": "https://dev-gud41elv.us.auth0.com/",
+    "audience": "https://productsapi.com",
+    "algorithms": ["RS256"],
+    "create": "create:products",
+    "read": "read:products",
+    "update": "update:products",
+    "delete": "delete:products"
+}
