@@ -8,7 +8,7 @@ const categoryService = require('../services/categoryService.js');
 // returns JSON
 router.get('/', async (req, res) => {
     let result;
-    // Get products
+    // Get animes
     try {
         result = await categoryService.getCategories();
         res.json(result);
@@ -28,7 +28,7 @@ router.get('/:id', async (req, res) => {
     // read value of id parameter from the request url
     const categoryId = req.params.id;
     // If validation passed execute query and return results
-    // returns a single product with matching id
+    // returns a single anime with matching id
     try {
         // Send response with JSON result
         result = await categoryService.getCategoryById(categoryId);

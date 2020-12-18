@@ -45,7 +45,7 @@ let validateNewAnime = (formAnime) => {
         // debug
         console.log("validateNewAnime(): Validation failed");
     }
-    // return new validated product object
+    // return new validated anime object
     return validatedAnime;
 }
 
@@ -59,7 +59,7 @@ let validateUpdateAnime = (formAnime) => {
     }
 
     // Validate form data for new anime fields
-    // Updating a anime does need a product id
+    // Updating a anime does need a anime id
     // Adding '' to the numeric values makes them strings for validation purposes ()
     if (
         validator.isNumeric(formAnime.AnimeId + '', {no_symbols: true, allow_negatives: false}) &&
@@ -70,7 +70,7 @@ let validateUpdateAnime = (formAnime) => {
         validator.isCurrency(formAnime.AnimePrice + '',{no_symbols: true, allow_negatives: false})
     ) {
         // Validation passed
-        // create a new Product instance based on Product model object
+        // create a new anime instance based on anime model object
         validatedAnime = new Anime(
             formAnime.AnimeId,
             formAnime.CategoryId,
@@ -84,7 +84,7 @@ let validateUpdateAnime = (formAnime) => {
         // debug
         console.log("validateUpdateAnime(): Validation failed");
     }
-    // return new validated product object
+    // return new validated anime object
     return validatedAnime;
 }
 

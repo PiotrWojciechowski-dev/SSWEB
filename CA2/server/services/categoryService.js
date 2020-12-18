@@ -5,16 +5,16 @@ const categoryRepository = require('../repositories/categoryRepository.js');
 const validator = require('validator');
 const category = require('../models/category.js');
 
-// Get all products via the repository
-// return products
+// Get all animes via the repository
+// return animes
 let getCategories = async () => {
     let categories = await categoryRepository.getCategories();
     return categories;
 };
     
-// Get product by id via the repository
+// Get anime by id via the repository
 // Validate input
-// return product
+// return anime
 let getCategoryById = async (categoryId) => {
 
     let category;
@@ -23,7 +23,7 @@ let getCategoryById = async (categoryId) => {
         console.log("getCategories service error: invalid id parameter");
         return "invalid parameter";
     }
-    // get product
+    // get anime
     category = await categoryRepository.getCategoryById(categoryId);
     return category;
 };

@@ -45,7 +45,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // GET animes by category id
-// id passed as parameter via url
+// id anime passed as parameter via url
 // Address http://server:port/anime/:id
 // returns JSON
 router.get('/bycat/:id', async (req, res) => {

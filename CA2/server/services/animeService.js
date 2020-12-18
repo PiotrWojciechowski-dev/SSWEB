@@ -6,16 +6,16 @@ const animeValidator = require('../validators/animeValidators.js')
 // Input validation package
 const validator = require('validator');
 
-// Get all products via the repository
-// return products
+// Get all animes via the repository
+// return animes
 let getAnimes = async () => {
     let animes = await animeRepository.getAnimes();
     return animes;
 };
     
-// Get product by id via the repository
+// Get anime by id via the repository
 // Validate input
-// return product
+// return anime
 
 let getAnimeById = async (animeId) => {
     let anime;
@@ -29,9 +29,9 @@ let getAnimeById = async (animeId) => {
     return anime;
 };
 
-// Get products in a category via the repository
+// Get animes in a category via the repository
 // Validate input
-// return products
+// return animes
 let getAnimeByCatId = async (catId) => {
 
     let animes;
@@ -52,14 +52,14 @@ let createAnime = async (anime) => {
     // declare variables
     let newlyInsertedAnime
 
-    // Call the product validator - kept seperate to avoid clutter here
+    // Call the anime validator - kept seperate to avoid clutter here
     let validatedAnime = animeValidator.validateNewAnime(anime)
 
-    // If validation returned a product object - save to db
+    // If validation returned a anime object - save to db
     if (validatedAnime != null) {
         newlyInsertedAnime = await animeRepository.createAnime(validatedAnime);
     } else {
-        // Product data failed validation
+        // anime data failed validation
         newlyInsertedAnime = {"error": "invalid anime"};
 
         // log the result
@@ -72,13 +72,13 @@ let updateAnime = async (anime) => {
         // declare variables
         let updatedAnime
 
-        // Call the product validator - kept seperate to avoid clutter here
+        // Call the anime validator - kept seperate to avoid clutter here
         let validatedAnime = animeValidator.validateUpdateAnime(anime)
-        // If validation returned a product object - save to db
+        // If validation returned a anime object - save to db
         if (validatedAnime != null) {
             updatedAnime = await animeRepository.updateAnime(validatedAnime);
         } else {
-            // Product data failed validation
+            // anime data failed validation
             updatedAnime = {"error": "invalid anime"};
     
             // log the result
@@ -97,7 +97,7 @@ let deleteAnime = async (id) => {
         return false;
     }
 
-    // delete product by id
+    // delete anime by id
     // result: true or false
     deleteAnime = await animeRepository.deleteAnime(id);
 
